@@ -44,6 +44,19 @@ public class App {
 
                     // todos.forEach(todo -> System.out.printf("%d / %s\n", todo.getId(), todo.getContent())); 와 동일
                 }
+
+                else if (cmd.equals("del")) {
+                    System.out.print("삭제할 할 일의 번호: ");
+                    long id = Long.parseLong(scanner.nextLine().trim());
+
+                    boolean isRemoved = todos.removeIf(todo -> todo.getId() == id);
+
+                    if(!isRemoved) {
+                        System.out.printf("%d번 할 일이 존재하지 않습니다. \n", id);
+                        continue;
+                    }
+                    System.out.printf("%d번 할 일이 삭제되었습니다. \n", id);
+                }
             }
         }
         //Scanner scanner = new Scanner(System.in);
