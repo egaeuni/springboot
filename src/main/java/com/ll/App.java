@@ -57,6 +57,23 @@ public class App {
                     }
                     System.out.printf("%d번 할 일이 삭제되었습니다. \n", id);
                 }
+
+                else if (cmd.equals("modify")) {
+                    System.out.print("수정할 할 일의 번호: ");
+                    long id = Long.parseLong(scanner.nextLine().trim());
+
+                    Todo foundTodo = todos.stream().filter(todo->todo.getId() == id).findFirst().orElse(null);
+
+                    if(foundTodo==null) {
+                        System.out.printf("%d번 할 일은 존재하지 않습니다\n", id);
+                    }
+
+                    System.out.printf("기존 할 일: %s\n", foundTodo.getContent());
+                    System.out.print("새 할 일: ");
+                    foundTodo.setContent((scanner.nextLine().trim()));
+
+                    System.out.printf("%d번 할 일이 수정되었습니다. \n", id);
+                }
             }
         }
         //Scanner scanner = new Scanner(System.in);
