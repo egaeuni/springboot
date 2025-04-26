@@ -4,18 +4,30 @@ import java.util.Scanner;
 
 public class App {
     public void run() {
-        System.out.println("할일 관리 앱, 시작!");
+        System.out.println("할 일 관리 앱, 시작!");
 
         try ( Scanner scanner = new Scanner(System.in) ) {
-            System.out.print("명령: ");
-            String cmd = scanner.nextLine().trim();
+            while ( true ) {
+                System.out.print("명령: ");
+                String cmd = scanner.nextLine().trim();
 
-            System.out.printf("입력한 명령: %s\n", cmd);
+                if ( cmd.equals("exit") ) {
+                    break;
+                }
+
+                else if ( cmd.equals("add") ) {
+                    long id = 1;
+                    System.out.print("할 일: ");
+                    String content = scanner.nextLine().trim();
+
+                    System.out.printf("%d번 할 일이 생성되었습니다.\n", id);
+                }
+            }
         }
         //Scanner scanner = new Scanner(System.in);
         //
         //scanner.close();   와 동일
 
-        System.out.println("할일 관리 앱, 끝!");
+        System.out.println("할 일 관리 앱, 끝!");
     }
 }
